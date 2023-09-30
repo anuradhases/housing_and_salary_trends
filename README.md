@@ -1,4 +1,4 @@
-# Boston Property Cost and Salary Analysis 2023
+# Boston Housing and Salary Analysis 2023
 ## 232 departments,
 
 ## Table of Contents
