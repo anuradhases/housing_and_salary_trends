@@ -21,6 +21,9 @@ In order to have an effective analysis, __ columns were selected.
 In order to determine which columns were relevant,
 This left with 11 relevant columns. 
 
+-- with more than 60% data missing, conclusions invalid
+-- remove injured, quinn_education, overtime
+
 Zip Code <br>
 Housing Type <br>
 Avg Building Cost <br>
