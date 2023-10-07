@@ -2,18 +2,22 @@
 -- Boston Salary Cleaning --
 ------------------------------
 
---view data
+-- View first 10 rows of data
 SELECT * 
 FROM BOSTON_SALARY_DETAILS
 LIMIT 10;
 
--- remove duplicates
+-- ***************************
+-- DATA CLEANING -------------
+-- ***************************
 
+-- Remove duplicate rows
 DROP TABLE IF EXISTS boston_salary_details_cleaned;
 CREATE TABLE boston_salary_details_cleaned AS
 SELECT DISTINCT *
 FROM boston_salary_details;
 
+-- Remove commas and rename columns
 UPDATE boston_salary_details_cleaned
 SET "REGULAR" = REPLACE("REGULAR", ',', '');
 UPDATE boston_salary_details_cleaned
@@ -29,6 +33,8 @@ SET "INJURED" = REPLACE("INJURED", ',', '');
 UPDATE boston_salary_details_cleaned
 SET "INJURED" =  ROUND("INJURED");
 
+ALTER TABLE boston_salary_details_cleaned
+RENAME COLUMN "POSTAL" TO "ZIP_CODE";
 
 UPDATE boston_salary_details_cleaned
 SET "QUINN_EDUCATION" = REPLACE("QUINN_EDUCATION", ',', '');
@@ -40,7 +46,7 @@ SET "TOTAL_GROSS" = REPLACE("TOTAL_GROSS", ',', '');
 UPDATE boston_salary_details_cleaned
 SET "TOTAL_GROSS" = ROUND("TOTAL_GROSS");
 
---count nulls
+-- Determine % missing data for all columns
 DROP TABLE IF EXISTS boston_salary_null_counts;
 CREATE TABLE boston_salary_null_counts AS
 SELECT 'name' as column_name, ROUND((COUNT(*)- COUNT("NAME"))/(COUNT(*))* 100) AS null_percent 
@@ -67,27 +73,41 @@ UNION ALL
 SELECT 'total_gross' as column_name, ROUND((COUNT(*)- COUNT("TOTAL_GROSS"))/(COUNT(*))* 100) AS null_percent 
 FROM boston_salary_details_cleaned
 UNION ALL
-SELECT 'postal' as column_name, ROUND((COUNT(*)- COUNT("POSTAL"))/(COUNT(*))* 100) AS null_percent 
+SELECT 'zip_code' as column_name, ROUND((COUNT(*)- COUNT("ZIP_CODE"))/(COUNT(*))* 100) AS null_percent 
 FROM boston_salary_details_cleaned;
 
+-- View columns with more than 5% missing data
 SELECT *
 FROM boston_salary_null_counts
 WHERE null_percent >= 5
 ORDER BY null_percent DESC;
 
--- with more than 60% data missing, conclusions invalid
--- remove injured, quinn_education, overtime
-
---add 0 to zip code
+-- Add 0 to beginning of ZIP_CODE column to graph on map
 UPDATE boston_salary_details_cleaned
-SET "POSTAL" = LPAD("POSTAL"::text, 5,'0');
+SET "ZIP_CODE" = LPAD("ZIP_CODE"::text, 5,'0');
 
-DROP TABLE IF EXISTS boston_salary_details_cleaned_by_zip_code;
-CREATE TABLE boston_salary_details_cleaned_by_zip_code AS
-SELECT "POSTAL", 
-ROUND(AVG("REGULAR"::float)) as avg_regular,
-ROUND(AVG("TOTAL_GROSS"::float)) as avg_total_gross
+-- Trim whitespace for all columns
+UPDATE boston_salary_details_cleaned
+SET "NAME" = TRIM("NAME", ' '),
+"DEPARTMENT_NAME" = TRIM("DEPARTMENT_NAME", ' '),
+"TITLE" = TRIM("TITLE", ' '),
+"REGULAR" = TRIM("REGULAR", ' '),
+"OVERTIME" = TRIM("OVERTIME", ' '),
+"INJURED" = TRIM("INJURED", ' '),
+"QUINN_EDUCATION" = TRIM("QUINN_EDUCATION", ' '),
+"TOTAL_GROSS" = TRIM("TOTAL_GROSS", ' '),
+"ZIP_CODE" = TRIM("ZIP_CODE", ' ');
+
+-- ***************************
+-- ANALYSIS 
+-- ***************************
+
+-- Number of departments 
+SELECT COUNT(DISTINCT"DEPARTMENT_NAME")
+FROM boston_salary_details_cleaned;
+
+-- Highest salary (TOTAL_GROSS), and zip code with highest salary
+SELECT "ZIP_CODE", MAX("TOTAL_GROSS"::float)
 FROM boston_salary_details_cleaned
-GROUP BY "POSTAL";
-
-
+WHERE ("TOTAL_GROSS"::float) = (SELECT(MAX("TOTAL_GROSS"::float)) FROM boston_salary_details_cleaned)
+GROUP BY "ZIP_CODE";
