@@ -36,6 +36,26 @@ Monthly Salary <br>
 Monthly Mortgage <br>
 
 
+-- land cost was excluded as values were 0 for all zip codes
+
+--monthly take home salary: : assumed 20% of income goes to taxes  
+-- https://www.forbes.com/advisor/income-tax-calculator/massachusetts/
+-- federal marginal tax rate: 22%
+-- state marginal tax rate: 5%
+-- taxes are roughly 20% of income, and will use this as basis since formula is complicated
+-- filing single
+
+-- monthly mortgage payments
+--assume 30 month 
+-- https://www.forbes.com/advisor/mortgages/mortgage-interest-rates-forecast/#:~:text=Refinance%20Rates%20for%20September%202023,30%2Dyear%20jumbo%3A%207.32%25
+-- interest rate: 5.55%
+-- APR: 5.56%
+-- length of loan: 30-year fixed
+-- assume no down payment
+-- https://www.rocketmortgage.com/learn/how-to-calculate-mortgage
+
+-- M = P [ I(1 + I)^N ] / [ (1 + I)^N − 1]
+
 After first look at the dataset, the following questions came to mind.
 
 
