@@ -15,16 +15,16 @@ The [salary data](https://data.boston.gov/dataset/employee-earnings-report), det
 
 The [property data]() was downloaded as a csv from Analyze Boston and came in with 50+ columns. Data cleaning and analysis for the property dataset done [here](https://github.com/anuradhases/property_trends). The property data was filtered to include only housing.<br>
 
-The salary and property data were joined on zip code, with 10 relevant columns:
+The salary and housing data were joined on zip code, with 10 relevant columns:
 
 
 Column Name | Description
 --- | ---
-Zip Code | location of property <br>
+Zip Code | location of housing <br>
 Housing Type | type of housing<br>
-Avg Building Cost | average building cost of property <br>
-Avg Prpty Total Cost | average total cost of property <br>
-Avg Gross Tax | average gross tax for property <br>
+Avg Building Cost | average building cost of housing <br>
+Avg Prpty Total Cost | average total cost of housing <br>
+Avg Gross Tax | average gross tax for housing <br>
 Avg Gross Tax Portion | average portion of gross tax based on property total cost<br>
 Avg Regular | average annual regular salary <br>
 Avg Total Gross | average annual total gross salary <br>
