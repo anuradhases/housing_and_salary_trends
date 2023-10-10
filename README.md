@@ -71,7 +71,7 @@ Exploratory Data Analysis and Data Visualizations:
 - How does average regular and average total gross salary compare for each department? <br>
 
 
-[Tableau dashboard]
+[Tableau dashboard](https://public.tableau.com/app/profile/anuradha.s6397/viz/BostonHousing_and_Salary_Analysis/Dashboard1?publish=yes)
 
 ## Key Insights:
 
