@@ -55,3 +55,6 @@ This [Tableau dashboard](https://public.tableau.com/app/profile/anuradha.s6397/v
 - **Average Annual Mortgage: 165K**
 - **Apartment buildings with 31+ units stand out, with 10X monthly mortgage than other housing, and are the most expensive(~100K).**
 - **Residential condo is the cheapest, with 59% of monthly income going towards monthly mortgage of ~3K.**
+
+<img src="https://github.com/anuradhases/housing_and_salary_trends/assets/49212192/71bb8244-6894-4893-b90c-335a45c3e4eb" width = "700" height = "500" />
+
