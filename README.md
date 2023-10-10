@@ -51,7 +51,7 @@ This [Tableau dashboard](https://public.tableau.com/app/profile/anuradha.s6397/v
 - **232 departments**
 - **Highest salary: 1.11M for zip code: 02186**
 - **Average salary: 67K**
-- **No affordable property to own for city employees. Average monthly mortgage is greater than 28% of monthly income for all housing.**
+- **No affordable housing to own for city employees. Average monthly mortgage is greater than 28% of monthly income for all housing.**
 - **Average Annual Mortgage: 165K**
 - **Apartment buildings with 31+ units stand out, with 10X monthly mortgage than other housing, and are the most expensive(~100K).**
 - **Residential condo is the cheapest, with 59% of monthly income going towards monthly mortgage of ~3K.**
