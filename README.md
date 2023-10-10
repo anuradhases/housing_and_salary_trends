@@ -5,92 +5,53 @@
 - [Project Overview](#projectoverview)
 - [Data Source](#datasource)
 - [Key Insights](#keyinsights)
-- [Interesting Facts](#keyinsights)
 
 ## Project Overview
 
-In this project, I conducted an analysis on ____- Boston salary records in 2023 and 
-
-, aimed at providing a high-level overview of salary and property cost in each city.
+Based on analysis of Boston property data, I was curious if owning property was affordable for city employees. In this project, I conducted an analysis on 19511 records from Boston housing in 1700-2022 and Boston employee salary in 2023, aimed at providing a high-level overview on affordability of owning housing.
 
 ## Data Source
-This dataset was downloaded as a csv from Boston Open Source Data and came in with __ columns.
-Data cleaning and analysis was done in Snowflake.
-Details of each column were provided here and
-In order to have an effective analysis, __ columns were selected.
-In order to determine which columns were relevant,
-This left with 11 relevant columns. 
+The [salary data](https://data.boston.gov/dataset/employee-earnings-report), detailing earnings of employees working for Boston, was downloaded as a csv from Analyze Boston and came in with 13 columns. Data was copied into a database in Snowflake. Data cleaning and analysis was done in Snowflake. Using the [payroll definition category](https://data.boston.gov/dataset/employee-earnings-report/resource/609a6014-5ab0-49d9-8c38-1389e7bf0d41), 3 relevant columns were selected. <br>
 
--- with more than 60% data missing, conclusions invalid
--- remove injured, quinn_education, overtime
+The [property data]() was downloaded as a csv from Analyze Boston and came in with 50+ columns. Data cleaning and analysis for the property dataset done [here](https://github.com/anuradhases/property_trends). The property data was filtered to include only housing.<br>
 
-Zip Code <br>
-Housing Type <br>
-Avg Building Cost <br>
-Avg Prpty Total Cost <br>
-Avg Gross Tax <br>
-Avg Gross Tax Portion <br>
-Avg Regular <br>
-Avg Total Gross <br>
-Monthly Salary <br>
-Monthly Mortgage <br>
+The salary and property data were joined on zip code, with 10 relevant columns:
 
 
--- land cost was excluded as values were 0 for all zip codes
+Column Name | Description
+--- | ---
+Zip Code | location of property <br>
+Housing Type | type of housing<br>
+Avg Building Cost | average building cost of property <br>
+Avg Prpty Total Cost | average total cost of property <br>
+Avg Gross Tax | average gross tax for property <br>
+Avg Gross Tax Portion | average portion of gross tax based on property total cost<br>
+Avg Regular | average annual regular salary <br>
+Avg Total Gross | average annual total gross salary <br>
+Monthly Income | average monthly total gross income based on average total gross salary <br>
+Monthly Mortgage | average monthly mortgage based on average property total cost <br>
 
---monthly take home salary: : assumed 20% of income goes to taxes  
--- https://www.forbes.com/advisor/income-tax-calculator/massachusetts/
--- federal marginal tax rate: 22%
--- state marginal tax rate: 5%
--- taxes are roughly 20% of income, and will use this as basis since formula is complicated
--- filing single
+- [Forbes Reference](https://www.forbes.com/advisor/income-tax-calculator/massachusetts/) for monthly income calculation. Assumed 20% of monthly income goes towards taxes.<br>
+- [Rocket Mortgage Reference](https://www.rocketmortgage.com/learn/how-to-calculate-mortgage) for monthly mortgage calculation. [Forbes Reference](https://www.forbes.com/advisor/mortgages/mortgage-interest-rates--forecast/#:~:text=Refinance%20Rates%20for%20September%202023,30%2Dyear%20jumbo%3A%207.32%25) for monthly mortgage interest rates and length of loan. Assumed 30-year fixed, with 5.55% interest rate and no down payment. <br>
+- All average costs associated with property are for each housing type for each zip code. <br>
+- **Affordability defined as monthly mortgage less than 28% of monthly gross income.** [Times Reference](https://time.com/personal-finance/article/percentage-of-income-mortgage/) <br>
 
--- monthly mortgage payments
---assume 30 month 
--- https://www.forbes.com/advisor/mortgages/mortgage-interest-rates-forecast/#:~:text=Refinance%20Rates%20for%20September%202023,30%2Dyear%20jumbo%3A%207.32%25
--- interest rate: 5.55%
--- APR: 5.56%
--- length of loan: 30-year fixed
--- assume no down payment
--- https://www.rocketmortgage.com/learn/how-to-calculate-mortgage
-
--- M = P [ I(1 + I)^N ] / [ (1 + I)^N − 1]
-
-After first look at the dataset, the following questions came to mind.
-
-
-
-
-Exploratory Data Analysis and Data Visualizations:
+ After first look at the dataset, the following questions came to mind.<br>
 - How many departments are included in the dataset? <br>
 - What is the highest salary, and in which zip code? <br>
-- How does monthly salary vary with zip code? <br>
-- Is the salary affordable for housing in each zip code? <br>
-- What kind of housing is affordable on monthly salary? (assuming mortage is max 1/2 the salary) <br>
-- How does monthly mortgage vary for each type of housing with zipcode? (map) <br>
-- How does average regular and average total gross salary compare for each department? <br>
+- How does monthly income vary with zip code? <br>
+- What is the average annual salary and annual mortgage? <br>
+- How does monthly mortgage vary for each housing type? <br>
+- What housing type(s) are less than 100% of monthly income? <br>
+- How does percent of monthly income towards monthly mortgage vary for each housing type and zip code? <br>
 
-
-[Tableau dashboard]
+This [Tableau dashboard](https://public.tableau.com/app/profile/anuradha.s6397/viz/BostonHousing_and_Salary_Analysis/Dashboard1?publish=yes) provides a visual representation of salary and housing costs for the Boston area, focusing on whether owning housing is affordable for city employees.
 
 ## Key Insights:
-
-- 232 departments
-
-  
---highest salary (total_gross), and zip code with highest salary
-- 1.11 million for zip code: 02186
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- **232 departments**
+- **Highest salary: 1.11M for zip code: 02186**
+- **Average salary: 67K**
+- **No affordable housing to own for city employees. Average monthly mortgage is greater than 28% of monthly income for all housing.**
+- **Average Annual Mortgage: 165K**
+- **Apartment buildings with 31+ units stand out, with 10X monthly mortgage than other housing, and are the most expensive(~100K).**
+- **Residential condo is the cheapest, with 59% of monthly income going towards monthly mortgage of ~3K.**
