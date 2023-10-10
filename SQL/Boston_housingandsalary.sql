@@ -52,7 +52,7 @@ WHERE "AVG_BUILDING_COST" > 0;
 
 -- Monthly take home salary
 ALTER TABLE boston_housing_and_salary
-ADD COLUMN monthly_salary FLOAT AS ROUND(("AVG_TOTAL_GROSS" * 0.8)/12);
+ADD COLUMN monthly_income FLOAT AS ROUND(("AVG_TOTAL_GROSS" * 0.8)/12);
 
 
 -- Monthly mortgage payments
