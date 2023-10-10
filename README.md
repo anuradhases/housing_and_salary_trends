@@ -34,7 +34,7 @@ Monthly Mortgage | average monthly mortgage based on average property total cost
 - [Forbes Reference](https://www.forbes.com/advisor/income-tax-calculator/massachusetts/) for monthly salary calculation. Assumed 20% of monthly salary goes towards taxes.<br>
 - [Rocket Mortgage Reference](https://www.rocketmortgage.com/learn/how-to-calculate-mortgage) for monthly mortgage calculation. [Forbes Reference](https://www.forbes.com/advisor/mortgages/mortgage-interest-rates--forecast/#:~:text=Refinance%20Rates%20for%20September%202023,30%2Dyear%20jumbo%3A%207.32%25) for monthly mortgage interest rates and length of loan. Assumed 30-year fixed, with 5.55% interest rate and no down payment. <br>
 - All average costs associated with property are for each housing type for each zip code. <br>
-- **Affordability defined as monthly mortgage less than 28% of monthly salary.** [Times Reference](https://time.com/personal-finance/article/percentage-of-income-mortgage/) <br>
+- **Affordability defined as monthly mortgage less than 28% of monthly gross salary.** [Times Reference](https://time.com/personal-finance/article/percentage-of-income-mortgage/) <br>
 
  After first look at the dataset, the following questions came to mind.<br>
 - How many departments are included in the dataset? <br>
