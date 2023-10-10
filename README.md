@@ -42,8 +42,8 @@ Monthly Mortgage | average monthly mortgage based on average property total cost
 - How does monthly salary vary with zip code? <br>
 - What is the average annual salary and annual mortgage? <br>
 - How does monthly mortgage vary for each housing type? <br>
-- What housing type(s) are affordable (less than 100% of total gross salary)? <br>
-- Is housing affordable (less than 30% of salary) for each zip code and housing type? <br>
+- What housing type(s) are less than 100% of total gross salary? <br>
+- How does percent of monthly salary towards monthly mortgage vary for each housing type and zip code? <br>
 
 This [Tableau dashboard](https://public.tableau.com/app/profile/anuradha.s6397/viz/BostonHousing_and_Salary_Analysis/Dashboard1?publish=yes) provides a visual representation of salary and housing costs for the Boston area, focusing on whether owning housing is affordable for city employees.
 
