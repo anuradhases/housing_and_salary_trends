@@ -8,7 +8,7 @@
 
 ## Project Overview
 
-Based on analysis of Boston property data, I was curious if owning property was affordable for city employees. In this project, I conducted an analysis on 19511 records from Boston housing in 1700-2022 and Boston employee salary in 2023, aimed at providing a high-level overview on affordability of owning housing.
+Based on analysis of Boston property data, I was curious if owning housing was affordable for city employees. In this project, I conducted an analysis on 19511 records from Boston housing in 1700-2022 and Boston employee salary in 2023, aimed at providing a high-level overview on affordability of owning housing.
 
 ## Data Source
 The [salary data](https://data.boston.gov/dataset/employee-earnings-report), detailing earnings of employees working for Boston, was downloaded as a csv from Analyze Boston and came in with 13 columns. Data was copied into a database in Snowflake. Data cleaning and analysis was done in Snowflake. Using the [payroll definition category](https://data.boston.gov/dataset/employee-earnings-report/resource/609a6014-5ab0-49d9-8c38-1389e7bf0d41), 3 relevant columns were selected. <br>
